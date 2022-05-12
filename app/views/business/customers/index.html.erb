@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><br><br>
+  <div class="d-flex  align-items-center  justify-content-center mb-3">
+    <h1> customer's Index</h1>
+  </div>
+  <div class="container">
+    <form class="d-flex">
+      <%= form_tag business_customers_path, method: :get do %>
+        <%= text_field_tag :customer_name, params[:customer_name], class: "form-control me-2", placeholder:"Search By Customer Name" %>
+        <%= submit_tag "search", class:"btn btn-outline-success" %>                                                                          
+      <% end %> 
+    </form> <br> 
+<table class="table  table-hover">
+  <thead>   
+  <tr>
+    <th scope="col">Customer Name</th>
+    <th scope="col">Contact Number</th>
+  </tr>
+</thead>
+<tbody>
+  <% @customers.each do |customer|%>
+  <tr>  
+    <td><%=customer.name%></td>
+    <td><%=customer.contact %></td>   
+    <td><button type="button" class="btn btn-link"><%= link_to "Preview", preview_business_customer_path(customer) , class:"btn btn-primary", method: :get%></button> 
+      <button type="button" class="btn btn-link"><%= link_to " Edit", edit_business_customer_path(customer), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= button_to " Destroy", delete_customer_business_customer_path(customer), class:"btn btn-primary", method: :delete %></button>
+    </td>
+  </tr>
+  <%end%> 
+</tbody>
+</table><br>           
+  <button type="button " class="btn btn-link"><%= link_to "Add new customer", new_business_customer_path, class:"btn btn-primary", method: :get %></button>                           
+</body>
+</html>

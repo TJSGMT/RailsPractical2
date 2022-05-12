@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><br><br>
+  <div class="d-flex  align-items-center  justify-content-center mb-3">
+    <h1> Product's Index</h1>
+  </div>
+  <div class="container">
+<% if flash[:notice] %> 
+  <% flash.each do |name,message| %>
+   <p class="text-danger"><%= message%></p>
+  <% end %>
+<% end %>
+<table class="table  table-hover">
+  <thead>   
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+  </tr>
+</thead>
+<tbody>
+  <% Product.all.each do |product|%>
+  <tr> 
+    <th scope="row"><%=product.name%></th>
+    <td><%=product.description%></td>
+    <td><%=product.price%></td>
+    <td><button type="button" class="btn btn-link"><%= link_to "Show", product_path(product), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= link_to " Edit", edit_product_path(product), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= button_to " Destroy", product_path(product), class:"btn btn-primary", method: :delete %></button>
+      <button type="button" class="btn btn-link"><%= button_to " Order", new_product_order_path(product), class:"btn btn-primary", method: :get %></button>
+    </td>
+  </tr>
+  <%end%> 
+</tbody>
+</table><br>                                      
+     <button type="button " class="btn btn-link"><%= link_to "Add new product", new_product_path, class:"btn btn-primary", method: :get %></button> 
+</body>
+</html>

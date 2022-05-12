@@ -1,0 +1,15 @@
+<% if flash[:errors] %>
+  <%= flash[:errors] %>
+<% end %>
+<div class="d-flex  align-items-center  justify-content-center mb-3">
+  <h1> Add Customer</h1>
+</div>
+<div class="container">
+  <%= form_with model: [:business, @customer]  do |f| %>
+    <h4><%= f.label :name, class: "form-label" %></h4>
+    <p><%= f.text_field :name, class: "form-control" %></p><br>
+    <h4><%= f.label :Contact, class: "form-label" %></h4>
+    <h4><%= f.text_field :contact, class: "form-control" %></h4> <br>
+    <h4><%= f.submit class: "btn btn-primary"  %></h4>
+  <% end %>
+</div>
