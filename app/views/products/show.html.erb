@@ -1,0 +1,9 @@
+<div class="text-center">
+  <h1>Product name :- <%= @product.name%>'s page</h1>
+  <h2>Description :- <%=@product.description%></h2>
+  <h2>Price :- <%= @product.price %><br></h2>
+  <% @product.orders.each do  |o|%>
+    <h5>Order Quantity = <%= o.quantity %></h5>
+    <h5>Toatal price = <%= total_price(o) %></h5><br>
+  <%end%>
+</div>

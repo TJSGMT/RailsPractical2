@@ -1,0 +1,17 @@
+<%if flash[:notice]%>
+  <%= flash[:notice]%>
+<%end%>
+<div class="d-flex  align-items-center  justify-content-center mb-3">
+  <h1> Order Product</h1>
+</div>
+<div class="container">
+  <%= form_with url: product_orders_path(@product), model: @order do  |f| %>
+    <h3><%= f.label :customer_name, class: "form-label" %></h3>
+    <p><%= f.select :customer_id,Customer.all.map {|p| [p.name , p.id ]} %></p>
+    <h3><%= f.label :product_name,class:"form-label" %></h3>
+    <%= f.select :product_id, [[@product.name , @product.id]] %>
+    <h4><%= f.label :Quantity, class: "form-label" %></h4>
+    <h4><%= f.text_field :quantity, class: "form-control" %></h4> <br>
+    <h4><%= f.submit class: "btn btn-primary"  %></h4>
+  <% end %>
+</div>

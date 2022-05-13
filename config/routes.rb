@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'homes/index'
+  root "products#index"
+   resources :products do
+    resources :orders 
+  end
+  namespace :business do
+    resources :customers, only: [:index, :edit, :create, :new, :update ] do
+      member do
+        get :preview
+        delete :delete_customer
+      end
+    end
+  end
 end
