@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  layout :set_layout
 
   def index
     @orders = Order.all
@@ -20,6 +21,10 @@ class OrdersController < ApplicationController
   end
   
   private
+  def set_layout
+    current_user.role == "admin" ? "application" : "merchant"
+  end
+
   def order_params
     params.require(:order).permit(:quantity, :total_price, :customer_id, :product_id)
   end
