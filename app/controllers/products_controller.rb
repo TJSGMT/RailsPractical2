@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 before_action :find_product ,only: [:edit ,:show ,:update ,:destroy]
-  
+layout :set_layout
+
   def index
     @products = Product.all
   end
@@ -45,6 +46,11 @@ before_action :find_product ,only: [:edit ,:show ,:update ,:destroy]
   end
 
   private
+
+  def set_layout
+    current_user.role == "admin" ? "application" : "merchant"
+  end
+
   def product_params
     params.require(:product).permit(:name, :description, :price)
   end

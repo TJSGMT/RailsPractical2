@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'homes/index'
+  # get 'homes/index'
   root "products#index"
+  # root "homes#index"
+  devise_for :users
+  resources :users
    resources :products do
     resources :orders 
   end
