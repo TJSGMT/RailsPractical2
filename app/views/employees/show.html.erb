@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card" style="width: 68rem;">
+    <div class="card-body">
+    <h1>Employee's Details</h1>
+      <h1>Name :- <%= @employee.employee_name%></h1>
+      <h2 >Email :-   <%=@employee.email%></h2>
+      <h2 >Gender  :-  <%= @employee.gender %><br></h2>
+      <h2 >Hobbies  :-<%= @employee.hobbies %><br></h2>
+      <h2 >Address  :-  <%= @employee.address%><br></h2>
+      <p>----------------------------------------------------</p>
+      <% @employee.addresses.each do |add| %>
+       <h6> House_name :-<%= add.house_name %> </h6>
+       <h6> Street_name :-<%= add.street_name %> </h6>
+       <h6> Road :-<%= add.road %> </h6>
+      <% end %>
+      <h5 >Mobile Number :- <%= @employee.mobile_number  %></h5><br>
+      <h5 >Birth Date   :-  <%= @employee.birtd_date %></h5>
+      <br>
+    </div>
+  </div>
+</div>
+<div class="container text-light" >
+</div>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # root "homes#index"
   devise_for :users
   resources :users
+  resources :employees
+  get '/search', to: "employees#search"
    resources :products do
     resources :orders 
   end

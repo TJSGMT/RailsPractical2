@@ -1,0 +1,45 @@
+<% if flash[:errors] %>
+  <%= flash[:errors] %>
+<% end %><br>
+<br>
+<div class="container">
+  <div class="card" style="width: 68rem;">
+    <div class="card-body">
+      <h4 class="card-title text-center">Employee Registration Form</h4>
+      <%= form_with model: @employee do |form| %><br>
+        <%= form.text_field :employee_name, class:"form-control", placeholder:"Enter name" %><br>
+        <%= form.email_field :email,class:"form-control", placeholder:"Enter Email"%><br>
+        <%= form.password_field :password,class:"form-control", placeholder:"Enter Password"%><br>
+        <h5><%= form.label :gender_male,"Gender : "%></h5>
+        <%= form.radio_button :gender, "Male"%>
+        <%= form.label :gender_male,"Male"%>
+        <%= form.radio_button :gender, "Female"%>
+        <%= form.label :gender_male,"Female"%><br>
+        <br>
+        <div class="form-group">
+          <h5><%= form.label :hobbies,"Hobbies : " %><br>
+          </h5>
+          <%= form.check_box :hobbies, { multiple: true },"Football", false %>
+          <%= form.label :hobbies, "Football" %>
+          <%= form.check_box :hobbies, { multiple: true },"Photography", false %>
+          <%= form.label :hobbies, "Photography" %>
+          <%= form.check_box :hobbies, { multiple: true },"Travelling", false %>
+          <%= form.label :hobbies, "Travelling" %>
+        </div>
+        <br>
+        <%= form.text_area :address ,class:"form-control", placeholder: "Enter Address"%><br>
+        <%= form.fields_for :addresses do |form|%>
+          <%= form.text_field :house_name, class:"form-control",placeholder:"Enter house "%><br>
+          <%= form.text_field :street_name, class:"form-control",placeholder:"Enter street"%><br>
+          <%= form.text_field :road, class:"form-control",placeholder:"Enter road"%><br>
+        <%end%>
+        <%= form.number_field :mobile_number, is: 10, class:"form-control", placeholder:"Enter Contact Number"%><br>
+        <%= form.date_field :birtd_date,class:"form-control"%><br>
+        <%= form.file_field :document, class:"form-control"%><br>
+        <br>
+        <%= form.submit class:"btn btn-primary"%><br>
+      <%end%>
+    </div>
+  </div>
+</div>
+</div>

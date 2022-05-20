@@ -1,0 +1,39 @@
+<div class="container text-center">
+  <h1 class="text-light">Search Employee Here</h1>
+  <form class="d-flex">
+    <%= form_tag employees_path, method: :get do %>
+      <%= email_field_tag :search, params[:search], class: "form-control me-2" %>
+      <%= submit_tag "search", class:"btn btn-warning" %>
+    <% end %>
+  </form><br>
+</div>
+<div class="container text-center ">
+<table class="table  table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Employee Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Hobbies</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone no.</th>
+      <th scope="col">Birth Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%if @employees.present?%>
+   <% @employees.each do |employee|%>
+      <tr> 
+        <th scope="row"><%=employee.employee_name%></th>
+        <td><%=employee.email%></td>
+        <td><%=employee.gender%></td>
+        <td><%=employee.hobbies%></td>
+        <td><%=employee.address%></td>
+        <td><%=employee.mobile_number%></td>
+        <td><%=employee.birtd_date%></td>
+      </tr>  
+     <%end%> 
+    <%end%>  
+  </tbody>
+ </thead>   
+</div>
