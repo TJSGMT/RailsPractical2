@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+  class ProductsController < ApplicationController
 before_action :find_product ,only: [:edit ,:show ,:update ,:destroy]
 layout :set_layout
 

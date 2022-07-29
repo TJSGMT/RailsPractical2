@@ -6,21 +6,23 @@ class OrdersController < ApplicationController
   end
 
   def new
+    # binding.pry
     @product = Product.find(params[:product_id])
-    @order = Order.new
+    @order = @product.orders.build
   end
 
   def create
     @order = Order.new(order_params)
     if @order.save
-      redirect_to product_path(params[:product_id])
+      redirect_to checkout_create_path(@order.product_id)
     else
-        flash[:errors] = @order.errors.full_messages
-        redirect_to orders_path
+      flash[:errors] = @order.errors.full_messages
+      redirect_to orders_path
     end
   end
-  
+
   private
+
   def set_layout
     current_user.role == "admin" ? "application" : "merchant"
   end

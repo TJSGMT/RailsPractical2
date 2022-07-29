@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'checkout/create/:id', to: "checkout#create", as: :checkout_create
   # get 'homes/index'
   root "products#index"
   # root "homes#index"

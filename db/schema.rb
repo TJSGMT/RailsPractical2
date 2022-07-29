@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_17_095220) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_20_103622) do
+  create_table "addresses", force: :cascade do |t|
+    t.string "house_name"
+    t.string "street_name"
+    t.string "road"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "employee_id"
+    t.index ["employee_id"], name: "index_addresses_on_employee_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.integer "contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "employee_name"
+    t.string "email"
+    t.string "password"
+    t.string "gender"
+    t.string "hobbies"
+    t.string "address"
+    t.integer "mobile_number"
+    t.date "birtd_date"
+    t.string "document"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
