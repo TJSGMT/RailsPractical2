@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: [:admin, :merchant]
+
+  def to_s
+    email
+  end
+
+  after_create do 
+    customer = Stripe::Customer.create(email: email)
+    update(stripe_customer_id: customer.id)
+  end
 end
