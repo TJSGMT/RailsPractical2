@@ -22,6 +22,8 @@
     <th scope="col">Title</th>
     <th scope="col">Description</th>
     <th scope="col">Price</th>
+    <th scope="col">Stripe Product ID</th>
+
   </tr>
 </thead>
     <%= link_to "Log-Out", destroy_user_session_path, class:"btn btn-danger", data: {turbo_method: :delete} %>
@@ -33,13 +35,15 @@
     <th scope="row"><%=product.name%></th>
     <td><%=product.description%></td>
     <td><%=product.price%></td>
+    <td><%=product.stripe_product_id%></td>
+
       <td><button type="button" class="btn btn-link"><%= link_to "Show", product_path(product), class:"btn btn-success", method: :get %></button>
     <% if current_user.role == "admin" %>
         <button type="button" class="btn btn-link"><%= link_to " Edit", edit_product_path(product), class:"btn btn-secondary", method: :get %></button>
         <button type="button" class="btn btn-link"><%= button_to " Destroy", product_path(product), class:"btn btn-danger", method: :delete %></button>
-        <button type="button" class="btn btn-link"><%= button_to " Order", new_product_order_path(product), class:"btn btn-primary", method: :get %></button>
       </td>
     <% end %>
+        <button type="button" class="btn btn-link"><%= button_to " Order", new_product_order_path(product), class:"btn btn-primary", method: :get %></button>
   </tr>
   <%end%> 
 </tbody>
